@@ -1,7 +1,6 @@
 # go-jams
 
-Two tests currently fail to match JSON: double-quote and quotes-never-fail. For double-quote,
-not sure which implementation is correct. For quotes-never-fail, I think the standard
+Two tests currently fail to match JSON: double-quote and quotes-never-fail. For both, I think the standard
 JSON parsing library is not handling this correctly:
 
 ``` go
