@@ -223,7 +223,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("JAMS:")
 	fmt.Println(Parse(content))
+
+	fmt.Print("\n----------------\n")
 
 	jcontent, err2 := os.ReadFile("test/pass/nested_example.json")
 	if err2 != nil {
@@ -234,5 +237,6 @@ func main() {
 	if err3 != nil {
 		log.Fatal(err2)
 	}
+	fmt.Println("JSON:")
 	fmt.Println(jout)
 }
