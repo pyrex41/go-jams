@@ -42,14 +42,15 @@ func TestJams(t *testing.T) {
 		json.Unmarshal(json_bytes, &json_result)
 
 		if fmt.Sprint(jams_result) != fmt.Sprint(json_result) {
-			t.Log("parsed JAMS does not match parsed JSON for ", name)
+			t.Log("FAIL -- JAMS != JSON -- ", name)
 			t.Fail()
 
+			fmt.Println("**FAILED** ---> ", name)
 			fmt.Println("JAMS:")
 			fmt.Println(jams_result)
-			fmt.Print("\n-------------------------\n")
 			fmt.Println("JSON:")
 			fmt.Println(json_result)
+			fmt.Print("\n-------------------------\n")
 			fmt.Print("\n\n\n")
 		}
 	}
