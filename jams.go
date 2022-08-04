@@ -1,11 +1,8 @@
-package main
+package jams
 
 import (
 	"errors"
-	"fmt"
 	"log"
-	"os"
-	"encoding/json"
 )
 
 type ParserState struct {
@@ -71,7 +68,7 @@ func issafe(b byte) bool {
 
 func (ps *ParserState) parse_bare(close byte) string {
 	ps.chompspace()
-	out := make([]byte,0)
+	out := make([]byte, 0)
 	m := len(ps.bytes) + 1
 	for i := ps.i; i < m; i++ {
 		c := ps.current()
@@ -96,7 +93,7 @@ func (ps *ParserState) parse_bare(close byte) string {
 
 func (ps *ParserState) parse_quote(close byte) string {
 	ps.chompspace()
-	out := make([]byte,0)
+	out := make([]byte, 0)
 	m := len(ps.bytes) + 1
 	c := ps.advance()
 	if !(c == byte('"')) {
@@ -216,27 +213,4 @@ func Parse(content []byte) interface{} {
 	var out interface{}
 	out = ps.parse_jam(' ')
 	return out
-}
-
-func main() {
-	content, err := os.ReadFile("test/pass/nested_example.jams")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("JAMS:")
-	fmt.Println(Parse(content))
-
-	fmt.Print("\n----------------\n")
-
-	jcontent, err2 := os.ReadFile("test/pass/nested_example.json")
-	if err2 != nil {
-		log.Fatal(err2)
-	}
-	var jout interface{}
-	err3 := json.Unmarshal(jcontent, &jout)
-	if err3 != nil {
-		log.Fatal(err2)
-	}
-	fmt.Println("JSON:")
-	fmt.Println(jout)
 }
