@@ -1,18 +1,5 @@
 # go-jams
 
-``` go
-╭─░▒▓ ~/go-jams │ main !1 ?1 ───────────────────────────── ✔ │ 20:34:04 ▓▒░
-╰─ go run .
-JAMS:
-map[basic_key:basic_value list_key:[item1 item2] nested:[map[key1:val1 key2:val2] map[key3:[val3 val4]]] str_key:superfluous nesting]
-
-----------------
-JSON:
-map[basic_key:basic_value list_key:[item1 item2] nested:[map[key1:val1 key2:val2] map[key3:[val3 val4]]] str_key:superfluous nesting]
-
-```
-
-
 Two tests currently fail to match JSON: double-quote and quotes-never-fail. For double-quote,
 not sure which implementation is correct. For quotes-never-fail, I think the standard
 JSON parsing library is not handling this correctly:
