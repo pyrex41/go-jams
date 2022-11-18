@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestJams(t *testing.T) {
+func TestPass(t *testing.T) {
 	names := []string{
 		"bare1",
 		"bare2",
@@ -55,4 +55,11 @@ func TestJams(t *testing.T) {
 		}
 	}
 
+}
+
+func BenchmarkCalculate(b *testing.B){
+	data, _ := os.ReadFile("test/pass/nested_example.jams")
+	for i:= 0; i < b.N; i++ {
+		Parse(data)
+	}
 }

@@ -1,5 +1,9 @@
 # go-jams
 
+implementing https://nikolai.fyi/jams/
+
+simple project to try to learn Go
+
 Two tests currently fail to match JSON: double-quote and quotes-never-fail. For both, I think the standard
 JSON parsing library is not handling this correctly:
 

@@ -195,6 +195,7 @@ func (ps *ParserState) parse_obj() map[string]interface{} {
 }
 
 func (ps *ParserState) parse_jam(close byte) interface{} {
+	ps.chompspace()
 	var jam interface{}
 	switch ps.current() {
 	case byte('{'):
@@ -209,7 +210,6 @@ func (ps *ParserState) parse_jam(close byte) interface{} {
 
 func Parse(content []byte) interface{} {
 	ps := ParserState{content, 0}
-	ps.chompspace()
 	var out interface{}
 	out = ps.parse_jam(' ')
 	return out
